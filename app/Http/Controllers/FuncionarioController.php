@@ -6,17 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Funcionario;
 
-use App\Http\Requests\FuncionarioRequest;
-
-use App\Http\Resources\Funcionario as FuncionarioResource;
-
 class FuncionarioController extends Controller
 {
-    //public function __construct(Request $request)
-    //{
-    //    $this->middleware('auth',[ 'except'=>['index','show'] ]);
-    //}
-
     /**
      * Display a listing of the resource.
      *
@@ -44,9 +35,8 @@ class FuncionarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(FuncionarioRequest $request)
+    public function store(Request $request)
     {
-        /*
         $dados = $request->all(); // pegar dados digitados no formulário
                                   // $dados: ['nome'=>'Joao','endereco'=>'rua x,34']
         $f = new Funcionario();
@@ -54,9 +44,6 @@ class FuncionarioController extends Controller
         $f->endereco = $dados['endereco'];
 
         $f->save();
-        */
-
-        Funcionario::create( $request->all() );
 
         return redirect('/funcionario'); //'Funcionario Cadastrado';
     }
@@ -67,11 +54,9 @@ class FuncionarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Funcionario $funcionario) //($id)
+    public function show($id)
     {
-        //$f = Funcionario::find($id);
-
-        return View('funcionario.show')->with('func',$funcionario);
+        //
     }
 
     /**
@@ -80,9 +65,9 @@ class FuncionarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Funcionario $funcionario)
+    public function edit($id)
     {
-        return View('funcionario.edit')->with('func',$funcionario);
+        //
     }
 
     /**
@@ -92,11 +77,9 @@ class FuncionarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(FuncionarioRequest $request, Funcionario $funcionario)
+    public function update(Request $request, $id)
     {
-        $funcionario->update( $request->all() );
-
-        return redirect('/funcionario');
+        //
     }
 
     /**
@@ -105,57 +88,8 @@ class FuncionarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Funcionario $funcionario)
+    public function destroy($id)
     {
-        $funcionario->delete();
-
-        return redirect('/funcionario');
-    }
-
-    // ---- Função de API
-
-    // GET + /api/funcionario/3  (routes/api.php)
-    public function apiFind(Funcionario $funcionario)
-    {
-        return new FuncionarioResource($funcionario);
-    }
-
-    // GET + /api/funcionario
-    public function apiAll()
-    {
-        return FuncionarioResource::collection(Funcionario::all());
-    }
-
-    // POST + /api/funcionario + JSON com os dados
-    public function apiStore(Request $request)
-    {
-        try{
-            $funcionario = Funcionario::create($request->all());
-            return response()->json($funcionario,201);
-        } catch (\Exception $ex) {
-            return response()->json(null,400);
-        } 
-    }
-
-    // PUT + /api/funcionario/3 + JSON com novos dados
-    public function apiUpdate(Request $request,Funcionario $funcionario)
-    {
-        try{
-            $funcionario->update($request->all());
-            return response()->json($funcionario,200);
-        } catch (\Exception $ex) {
-            return response()->json(null,400);
-        } 
-    }
-
-    // DELETE + /api/funcionario/3
-    public function apiDelete(Funcionario $funcionario)
-    {
-        try{
-            $funcionario->delete();
-            return response()->json(null,204);
-        } catch (\Exception $ex) {
-            return response()->json(null,400);
-        } 
+        //
     }
 }

@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FuncionarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +17,3 @@ use App\Http\Controllers\FuncionarioController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('/funcionario',[FuncionarioController::class,'apiAll']);
-
-Route::get('/funcionario/{funcionario}',[FuncionarioController::class,'apiFind']);
-
-Route::post('/funcionario',[FuncionarioController::class,'apiStore']);
-
-Route::put('/funcionario/{funcionario}',[FuncionarioController::class,'apiUpdate']);
-
-Route::delete('/funcionario/{funcionario}',[FuncionarioController::class,'apiDelete']);
