@@ -12,10 +12,11 @@ use App\Http\Resources\Funcionario as FuncionarioResource;
 
 class FuncionarioController extends Controller
 {
-    public function __construct(Request $request)
-    {
-        $this->middleware('auth',[ 'except'=>['','show'] ]);
-    }
+    //public function __construct(Request $request)
+    //{
+    //    $this->middleware('auth',[ 'except'=>['index','show'] ]);
+    //}
+
     /**
      * Display a listing of the resource.
      *
@@ -45,22 +46,6 @@ class FuncionarioController extends Controller
      */
     public function store(FuncionarioRequest $request)
     {
-        
-        $dados = $request->all(); // pegar dados digitados no formulário
-                                  // $dados: ['nome'=>'Joao','endereco'=>'rua x,34']
-        $f = new Funcionario();
-        $f->nome = $dados['nome'];
-        $f->sobrenome = $dados['sobrenome'];
-        $f->endereco = $dados['endereco'];
-        $f->dataNascimento = $dados['dataNascimento'];
-        $f->cpf = $dados['cpf'];
-        $f->telefone = $dados['telefone'];
-        $f->email = $dados['email'];
-
-
-        $f->save();
-        
-
         Funcionario::create( $request->all() );
 
         return redirect('/funcionario'); //'Funcionario Cadastrado';
@@ -74,7 +59,7 @@ class FuncionarioController extends Controller
      */
     public function show(Funcionario $funcionario) //($id)
     {
-        $f = Funcionario::find($funcionario);
+        //$f = Funcionario::find($id);
 
         return View('funcionario.show')->with('func',$funcionario);
     }
