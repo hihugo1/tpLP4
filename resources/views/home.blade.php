@@ -16,6 +16,9 @@
                     <div class="d-flex flex-column">
                         {{ __('Bem vindo de volta!')  }}
                         <strong>{{Auth::user()->name}}</strong>
+                            {{ __('Esse é o sistema de cadastro de Funcionários 4.0!')  }}
+                        <a href='/funcionario'>Visualizar Funcionários</a>
+                        <a href='/funcionario/create'>Cadastrar Funcionários</a>
                     </div>
                 </div>
             </div>

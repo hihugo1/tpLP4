@@ -12,5 +12,10 @@
 </head>
 <body>
     @yield('corpo')
+    <footer class="footer navbar-fixed-bottom">
+    <p>Nome: Gerson Rangel Garcia</p>
+    <p>Nome: Hugo Sergio Alves Souza</p>
+        <p>Nome: Sabrina Maria Andrade Carvalho</p>
+    </footer>
 </body>
 </html>

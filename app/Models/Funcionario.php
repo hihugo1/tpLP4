@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Funcionario extends Model
 {
-    //use HasFactory;
+    use HasFactory;
 
-    protected $fillable = ['nome','endereco','dataNascimento'];
+    protected $fillable = ['nome','sobrenome','endereco','dataNascimento','cpf','telefone','email'];
 }
