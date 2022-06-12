@@ -12,10 +12,10 @@ use App\Http\Resources\Funcionario as FuncionarioResource;
 
 class FuncionarioController extends Controller
 {
-    //public function __construct(Request $request)
-    //{
-    //    $this->middleware('auth',[ 'except'=>['index','show'] ]);
-    //}
+    public function __construct(Request $request)
+    {
+        $this->middleware('auth',[ 'except'=>['','show'] ]);
+    }
 
     /**
      * Display a listing of the resource.
